@@ -44,7 +44,7 @@ function init(){
             // store it so that we can use it in password confirmation field also 
             var password = generatePassword();
             var type = ele.attr('type');
-            console.log("its type is"+type);
+            console.log("its type is"+type+" tag is "+ele.prop("tagName"));
             if(type == "text"){
                 ele.val(randomNames[Math.round(Math.random()*19)]);
             }
@@ -104,6 +104,12 @@ function init(){
                     //repeatation of looping to same group again
                     radioboxnames.push(radioname);
                 }
+            }
+            else if(ele.prop("tagName") == "SELECT"){
+                var randomindex = Math.round(Math.random()*ele.children('option').length);
+                if(typeof ele[0][randomindex] !== 'undefined')
+                    ele[0][randomindex].selected = 'selected';
+                 
             }
 
         }
